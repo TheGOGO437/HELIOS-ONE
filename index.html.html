@@ -1,0 +1,215 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HELIOS ONE</title>
+  <style>
+    :root {
+      --amarillo1: #F2CB05;
+      --amarillo2: #F29F05;
+      --amarillo3: #F28705;
+      --negro: #0D0D0D;
+      --fondo-opaco: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Open Sans', sans-serif;
+      background: url('https://via.placeholder.com/1600x900') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    /* Pantalla de bienvenida */
+    #bienvenida {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .contenedor-bienvenida {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    #bienvenida img {
+      width: 350px;
+      max-width: 80%;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    #mensajeBienvenida strong {
+      color: var(--amarillo1);
+    }
+
+    #mensajeBienvenida {
+      color: white;
+      font-size: 1.5em;
+    }
+
+    /* Barra superior */
+    .topbar {
+      width: 100%;
+      height: 60px;
+      background-color: var(--negro);
+      color: white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 20px;
+      position: fixed;
+      top: 0;
+      z-index: 900;
+    }
+
+    .topbar h1 {
+      font-size: 1.2em;
+      color: var(--amarillo1);
+    }
+
+    .topbar span {
+      font-size: 0.9em;
+      color: var(--amarillo3);
+      margin-left: 10px;
+    }
+
+    /* Menú lateral */
+    .menu {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px 0 0 10px;
+      z-index: 100;
+    }
+
+    .menu button {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 10px 0;
+      cursor: pointer;
+      text-align: right;
+      transition: 0.3s;
+      text-transform: uppercase;
+    }
+
+    .menu button:hover {
+      color: var(--amarillo1);
+      transform: translateX(-5px);
+    }
+
+    /* Secciones */
+    .tab {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      background-color: var(--negro);
+      text-align: center;
+      padding: 20px;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .tab.active {
+      display: block;
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .tab img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de bienvenida -->
+  <div id="bienvenida">
+    <div class="contenedor-bienvenida">
+      <img src="C:\Users\ITADORI-SHISUI\Documents\SUMMIT YOUNG\WhatsApp_Image_2025-05-16_at_1.55.34_PM-removebg-preview.png" alt="Logo HELIOS ONE" onclick="ingresar()">
+      <h1 id="mensajeBienvenida">Haz clic en el logo para ingresar</h1>
+    </div>
+  </div>
+
+  <!-- Barra superior -->
+  <div class="topbar">
+    <h1>ELIOSONE.com</h1>
+    <span>Un paso hacia ciudades más sostenibles</span>
+  </div>
+
+  <!-- Menú lateral -->
+  <div class="menu">
+    <button onclick="showTab('tab1')">¿QUÉ ES?</button>
+    <button onclick="showTab('tab2')">¿CÓMO FUNCIONA?</button>
+    <button onclick="showTab('tab3')">¿DE QUÉ ESTÁ HECHO?</button>
+    <button onclick="showTab('tab4')">¿PARA QUÉ SIRVE?</button>
+    <button onclick="showTab('tab5')">CREADORES DE ELIOS ONE</button>
+  </div>
+
+  <!-- Secciones -->
+  <div id="tab1" class="tab active">
+    <img src="C:\Users\ITADORI-SHISUI\Downloads\Texto del párrafo (1).jpg" alt="¿Qué es HELIOS ONE?">
+  </div>
+  <div id="tab2" class="tab">
+    <img src="C:\Users\ITADORI-SHISUI\Documents\SUMMIT YOUNG\¿COMO FUNCIONA.jpg" alt="¿Cómo funciona HELIOS ONE?">
+  </div>
+  <div id="tab3" class="tab">
+    <img src="C:\Users\ITADORI-SHISUI\Documents\SUMMIT YOUNG\DE.jpg" alt="¿De qué está hecho HELIOS ONE?">
+  </div>
+  <div id="tab4" class="tab">
+    <img src="C:\Users\ITADORI-SHISUI\Downloads\Texto del párrafo (2).jpg" alt="¿Para qué sirve HELIOS ONE?">
+  </div>
+  <div id="tab5" class="tab">
+    <img src="C:\Users\ITADORI-SHISUI\Documents\SUMMIT YOUNG\CREADORES DE HELIOS ONE (1).jpg" alt="Creadores de HELIOS ONE">
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      const selected = document.getElementById(tabId);
+      if (selected) selected.classList.add('active');
+    }
+
+    function ingresar() {
+      const bienvenida = document.getElementById('bienvenida');
+      bienvenida.style.opacity = '0';
+      setTimeout(() => bienvenida.style.display = 'none', 800);
+    }
+
+    window.onload = () => {
+      showTab('tab1');
+    };
+  </script>
+</body>
+</html>
